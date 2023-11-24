@@ -8,7 +8,7 @@
   <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
   <link href="{{ url_for('static', filename='css/font-awesome.min.css') }}" rel="stylesheet">
   <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
-  <title>Educational Bootstrap 5 Login Page Website Template</title>
+  <title>Login</title>
 </head>
 <body>
   <section class="form-02-main">
@@ -20,6 +20,19 @@
               <div class="logo">
                 <img src="{{ url_for('static', filename='images/user.png') }}">
               </div>
+
+              {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                  <div class="alert alert-danger" role="alert">
+                    <ul>
+                      {% for message in messages %}
+                        <li>{{ message }}</li>
+                      {% endfor %}
+                    </ul>
+                  </div>
+                {% endif %}
+              {% endwith %}
+
               <form method="POST" action="/autenticar">
                 <div class="form-group">
                   <input type="email" name="email" class="form-control _ge_de_ol" placeholder="Digite o email" required>
